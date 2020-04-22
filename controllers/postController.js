@@ -19,6 +19,7 @@ exports.create = function(req, res) {
     })
     req.flash("success", "New post successfully created.")
     req.session.save(() => res.redirect(`/post/${newId}`))
+    console.log(req.session.user)
   }).catch(function(errors) {
     errors.forEach(error => req.flash("errors", error))
     req.session.save(() => res.redirect("/create-post"))
